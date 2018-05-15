@@ -1,26 +1,14 @@
-<!-- <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "assesment";
+<?php require("connection.php"); 
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-} 
-    $sql = "SELECT * FROM Bio";
-    $result = $conn->query($sql);
+$sql = "SELECT biography FROM Bio";
+$result = $conn->query($sql);
+foreach($result as $row){
+    $data=$row["biography"];
+}
 
-    foreach($results as $re){
-        echo $re["user_id"];
-        echo $re["biography"];
-    };
+$conn->close();
 
-
-
-?> -->
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -51,8 +39,7 @@ if ($conn->connect_error) {
           <img src="img/marshall.jpg" alt="" class="inner">
           <div class="p2">
             <h2 style="color:blue; text-align:center;">BIO</h2>
-            <p>web developer working with OlotuSquare.I have a passion for technology and am open for more development.
-            you can connect with me on
+            <p><?php echo $data; ?></p>
             <p></p>
             <h2 style="color:blue; text-align:center;">SKILL SET</h2>
             <ul>
